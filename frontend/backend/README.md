@@ -25,12 +25,16 @@ http://localhost:3000/create-table-vote
 ## Step 6 Insert Joke data
 
 ![Inser Joke](./insertJoke.png)
+POST: http://localhost:3000/jokes
 
 ## Step 7 Get a joke random
 
+GET: http://localhost:3000/jokes
 ![Get random Joke](./getRandomJoke.png)
 Can get all jokes by remove idList in Boby
 
 ## Step 8 Voting Joke
+
+POST: http://localhost:3000/votes
 
 ![Vote Joke](./votingJoke.png)
