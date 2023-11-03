@@ -2,7 +2,7 @@
 
 ## Step 1
 
-Npm i
+Npm i at backend folder
 
 ## Step 2
 
@@ -10,7 +10,7 @@ Create 'zens' database in mysql
 
 ## Step 3
 
-Change db password in server.js (line 15)
+Change db password in server.js file(line 15)
 
 ## Step 4
 
