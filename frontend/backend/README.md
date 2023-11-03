@@ -1,0 +1,36 @@
+## Setup
+
+## Step 1
+
+Npm i
+
+## Step 2
+
+Create 'zens' database in mysql
+
+## Step 3
+
+Change db password in server.js (line 15)
+
+## Step 4
+
+run "node server.js"
+
+## Step 5 create user, joke, vote table
+
+http://localhost:3000/create-table-user
+http://localhost:3000/create-table-joke
+http://localhost:3000/create-table-vote
+
+## Step 6 Insert Joke data
+
+![Inser Joke](./insertJoke.png)
+
+## Step 7 Get a joke random
+
+![Get random Joke](./getRandomJoke.png)
+Can get all jokes by remove idList in Boby
+
+## Step 8 Voting Joke
+
+![Vote Joke](./votingJoke.png)

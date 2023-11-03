@@ -69,10 +69,62 @@ CREATE TABLE vote (
   );
 });
 
-app.get("/jokes", function (req, res) {
-  dbConn.query("SELECT * FROM joke", function (error, results, fields) {
+// insert joke
+app.post("/jokes", function (req, res) {
+  const joke = req.body;
+  const insertDataQuery = `INSERT INTO joke SET ?`;
+
+  if (!joke) {
+    return res.status(400).send({ error: true, message: "error" });
+  }
+  dbConn.query(insertDataQuery, joke, function (error, results, fields) {
     if (error) throw error;
-    return res.send({ error: false, data: results, message: "joke list." });
+    return res.send({
+      error: false,
+      data: results,
+      message: "New joke has been created successfully.",
+    });
+  });
+});
+
+//get joke random mà không bị trùng với joke đã xem
+app.get("/jokes", function (req, res) {
+  let idList = req.body.idList;
+  if (idList) {
+    dbConn.query(
+      `SELECT * FROM joke
+WHERE joke_id NOT IN (?)
+ORDER BY RAND()
+LIMIT 1;`,
+      idList,
+      function (error, results, fields) {
+        if (error) throw error;
+        return res.send({ error: false, data: results, message: "joke list." });
+      }
+    );
+  } else {
+    dbConn.query(`SELECT * FROM joke`, function (error, results, fields) {
+      if (error) throw error;
+      return res.send({ error: false, data: results, message: "joke list." });
+    });
+  }
+});
+
+//voting joke
+app.post("/votes", function (req, res) {
+  const vote = req.body;
+  const insertDataQuery = `INSERT INTO vote SET ?`;
+
+  if (!vote) {
+    return res.status(400).send({ error: true, message: "errror" });
+  }
+  dbConn.query(insertDataQuery, vote, function (error, results, fields) {
+    if (error) throw error;
+    return res.send({
+      error: false,
+      data: results,
+      message: "vote has been created successfully.",
+    });
   });
 });
 
